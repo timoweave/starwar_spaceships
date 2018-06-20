@@ -1,0 +1,21 @@
+.StarshipContainer {
+  margin: 50px;
+  display: grid;
+  grid-gap: 80px;
+  grid-template-areas: "left right"
+                       "left buy";
+}
+
+.StarshipLeft {
+  grid-area: left;
+}
+
+.StarshipRight {
+  margin-top: 50px;    
+  grid-area: right;
+}
+
+.StarshipBuy input {
+  grid-area: buy;
+  width: 100%;
+}
