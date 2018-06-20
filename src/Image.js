@@ -3,7 +3,6 @@ import gql from "graphql-tag";
 import {Query} from "react-apollo";
 
 const Image = props => {
-  console.log({props});
   const {match: {params: {id}}} = props;
   const query = gql`
     query($id: String!) {

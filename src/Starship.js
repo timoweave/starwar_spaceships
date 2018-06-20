@@ -3,7 +3,6 @@ import {Query} from "react-apollo";
 import gql from "graphql-tag";
 
 const Starship = props => {
-  console.log({props});
   const {match: {params: {model}}} = props;
   const query = gql`
     query($model: String!) {
@@ -35,7 +34,6 @@ const Starship = props => {
           return <h4>{error.message}</h4>;
         }
         const {starship} = data;
-        console.log({starship});
 
         const {
           name,

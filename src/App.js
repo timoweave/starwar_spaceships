@@ -4,7 +4,6 @@ import {
   Redirect,
   Route,
   Switch,
-  Link,
 } from "react-router-dom";
 import {ApolloProvider} from "react-apollo";
 

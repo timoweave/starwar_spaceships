@@ -4,7 +4,6 @@ import {Query} from "react-apollo";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
-import Starship from "./Starship";
 import "./Starships.css";
 
 const StyledLink = styled(Link)`
@@ -67,7 +66,7 @@ const Starships = props => {
                   {ships.starships.results.map(({url, name}) => {
                     const parts = url.split("/");
                     parts.reverse();
-                    const [_, model] = parts;
+                    const [, model] = parts;
                     const {url: image_url} = images.find(i => i.id === model);
 
                     return (
