@@ -80,72 +80,74 @@ const Starship = props => {
                   <div className="StarshipRight">
                     <h1>Tech Specs</h1>
                     <table>
-                      <tr>
-                        <td>model</td>
-                        <td>{model}</td>
-                      </tr>
-                      <tr>
-                        <td>make</td>
-                        <td>{manufacturer}</td>
-                      </tr>
-                      <tr>
-                        <td>speed</td>
-                        <td>
-                          {formatter.format(max_atmosphering_speed, {
-                            symbol: " ",
-                            format: "%v",
-                          })}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>cost</td>
-                        <td>
-                          {formatter.format(cost_in_credits, {
-                            locale: "en-US",
-                          })}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>length</td>
-                        <td>
-                          {formatter.format(length, {
-                            symbol: " ",
-                            format: "%v",
-                          })}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>class</td>
-                        <td>{starship_class}</td>
-                      </tr>
-                      <tr>
-                        <td>hyperdrive</td>
-                        <td>{hyperdrive_rating}</td>
-                      </tr>
-                      <tr>
-                        <td>consumable</td>
-                        <td>{consumables}</td>
-                      </tr>
-                      <tr>
-                        <td>passengers</td>
-                        <td>
-                          {formatter.format(passengers, {
-                            symbol: " ",
-                            precision: 0,
-                            format: "%v",
-                          })}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>crew</td>
-                        <td>
-                          {formatter.format(crew, {
-                            symbol: " ",
-                            precision: 0,
-                            format: "%v",
-                          })}
-                        </td>
-                      </tr>
+                      <tbody>
+                        <tr>
+                          <td>model</td>
+                          <td>{model}</td>
+                        </tr>
+                        <tr>
+                          <td>make</td>
+                          <td>{manufacturer}</td>
+                        </tr>
+                        <tr>
+                          <td>speed</td>
+                          <td>
+                            {formatter.format(max_atmosphering_speed, {
+                              symbol: " ",
+                              format: "%v",
+                            })}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>cost</td>
+                          <td>
+                            {formatter.format(cost_in_credits, {
+                              locale: "en-US",
+                            })}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>length</td>
+                          <td>
+                            {formatter.format(length, {
+                              symbol: " ",
+                              format: "%v",
+                            })}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>class</td>
+                          <td>{starship_class}</td>
+                        </tr>
+                        <tr>
+                          <td>hyperdrive</td>
+                          <td>{hyperdrive_rating}</td>
+                        </tr>
+                        <tr>
+                          <td>consumable</td>
+                          <td>{consumables}</td>
+                        </tr>
+                        <tr>
+                          <td>passengers</td>
+                          <td>
+                            {formatter.format(passengers, {
+                              symbol: " ",
+                              precision: 0,
+                              format: "%v",
+                            })}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>crew</td>
+                          <td>
+                            {formatter.format(crew, {
+                              symbol: " ",
+                              precision: 0,
+                              format: "%v",
+                            })}
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
                     <button onClick={() => alert("Call 404-821-2161 now!")}>
                       buy
