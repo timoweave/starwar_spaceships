@@ -1,8 +1,8 @@
 .StarshipContainer {
   padding: 50px;
   display: grid;
-  grid-template-areas: "left right"
-                       "left right";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "left left right";
   grid-gap: 20px;                       
 }
 
