@@ -1,0 +1,47 @@
+.StarshipsContainer {
+  margin-top: 80px;
+  margin-left: 80px;
+  margin-right: 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.StarshipsLink {
+    text-decoration: 'none';
+}
+
+.StarshipsCard {
+    transition: transform 0.5s ease;
+    opacity: 0.90;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transform: scale(0.975);
+    text-decoration: none none none none;
+}
+
+.StarshipsCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: scale(1.025);
+    opacity: 1;
+}
+
+.StarshipsLabel {
+    background-color: #EEE;
+}
+
+.StarshipsLabel h1 {
+    color: black;
+    padding: 16px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;        
+    margin-top: -4px;
+    text-decoration: none none none none;
+}
+
+.StarshipsLabel h2 {
+    color: grey;
+    padding-top: 0px;
+    margin-top: 0px;        
+    text-decoration: none none none none;
+    padding: 16px;
+}
