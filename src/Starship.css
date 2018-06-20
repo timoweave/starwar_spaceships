@@ -1,21 +1,44 @@
 .StarshipContainer {
-  margin: 50px;
+  padding: 50px;
   display: grid;
-  grid-gap: 80px;
   grid-template-areas: "left right"
-                       "left buy";
+                       "left right";
+  grid-gap: 20px;                       
 }
 
 .StarshipLeft {
+  width: 100%;
   grid-area: left;
 }
 
 .StarshipRight {
-  margin-top: 50px;    
   grid-area: right;
+  align-self: center;
+  width: 320px;
 }
 
-.StarshipBuy input {
-  grid-area: buy;
+.StarshipRight table {
   width: 100%;
+  font-size: 1rem;
+}
+
+.StarshipRight table tr {
+    line-height: 20px;
+}
+
+.StarshipRight table tr td:nth-child(1) {
+  text-align: left;
+}
+
+.StarshipRight table tr td:nth-child(2) {
+  text-align: right;    
+}
+
+.StarshipRight button {
+  margin-top: 50px;
+  width: 100%;
+  line-height: 2rem;
+  font-size: 1rem;
+  background-color: royalblue;
+  color: white;
 }
