@@ -3,11 +3,17 @@ import {ApolloLink} from "apollo-client-preset";
 import {InMemoryCache} from "apollo-cache-inmemory";
 import {RestLink} from "apollo-link-rest";
 import {withClientState} from "apollo-link-state";
+import {persistCache} from "apollo-cache-persist";
 
 const cache = new InMemoryCache();
+persistCache({
+  cache,
+  storage: window.localStorage,
+});
 
 const make_img = (id, url) => ({id, url, __typename: "Image"});
 export const images = [
+  // TBD: should create graphql server to send image urls
   make_img("15", "/images/executor_class_ssd_final_demo_by_enterprise_e.jpg"),
   make_img("5", "/images/ILC-2.jpg"),
   make_img("9", "/images/1deathstar.jpeg"),
