@@ -11,24 +11,27 @@ import client from "./store.js";
 import Starships from "./Starships";
 import Starship from "./Starship";
 import About from "./About";
+import {StyledLink} from "./Starships";
 
 import "./App.css";
 
 const App = () => (
   <ApolloProvider client={client}>
     <div className="App">
-      <div>
-        <header className="App-header">
-          <h1 className="App-title">Watto's Space Emporium</h1>
-        </header>
-      </div>
       <Router>
-        <Switch>
-          <Route exact path="/starships" component={Starships} />
-          <Route path="/starships/:model" component={Starship} />
-          <Route path="/about" component={About} />
-          <Redirect to="/starships" />
-        </Switch>
+        <div>
+          <header className="App-header">
+            <h1 className="App-title">
+              <StyledLink to="/about">Watto's Space Emporium</StyledLink>
+            </h1>
+          </header>
+          <Switch>
+            <Route exact path="/starships" component={Starships} />
+            <Route path="/starships/:model" component={Starship} />
+            <Route path="/about" component={About} />
+            <Redirect to="/starships" />
+          </Switch>
+        </div>
       </Router>
     </div>
   </ApolloProvider>

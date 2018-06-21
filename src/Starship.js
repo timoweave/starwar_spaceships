@@ -43,12 +43,17 @@ const Starship = props => {
                     <h1>{name}</h1>
                     <Mutation mutation={NEXT_IMAGE}>
                       {nextImage => (
-                        <img
-                          alt={model_name}
-                          src={url[selected]}
-                          width="100%"
-                          onClick={() => nextImage({variables: {id: model}})}
-                        />
+                        <div className="StarshipImage">
+                          <img
+                            alt={model_name}
+                            src={url[selected]}
+                            width="100%"
+                            onClick={() => nextImage({variables: {id: model}})}
+                          />
+                          <div className="StarshipImageInstruction">
+                            click to see next image
+                          </div>
+                        </div>
                       )}
                     </Mutation>
                     <p>

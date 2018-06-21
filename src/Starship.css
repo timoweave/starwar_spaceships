@@ -11,6 +11,19 @@
   grid-area: left;
 }
 
+.StarshipImage {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.StarshipImageInstruction {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  opacity: 0.5;
+}
+
 .StarshipRight {
   grid-area: right;
   align-self: top;

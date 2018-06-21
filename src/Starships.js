@@ -7,8 +7,9 @@ import styled from "styled-components";
 import "./Starships.css";
 import {QUERY_SHIPS, QUERY_IMAGES} from "./store";
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   text-decoration: none;
+  color: white;
   &:focus,
   &:hover,
   &:visited,
