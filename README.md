@@ -3,6 +3,10 @@ Overview
 
 Show a list of spaceship and its detail for sale from Watto.
 
+![](screenshots/Screenshot_2018-06-21_12.20.31.png)
+![](screenshots/Screenshot_2018-06-21_12.20.36.png)
+![](screenshots/Screenshot_2018-06-21_12.20.40.png)
+
 Installation
 ============
 
