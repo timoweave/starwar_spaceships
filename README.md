@@ -6,8 +6,15 @@ Installation
 1. `npm start`
 1. `open http://localhost:3000` (if previous step didn't open)
 
-Design
-======
+Routing
+=======
+
+1. /starships     show all the available starship available from Watto Space Eporium
+1. /starships/:id show detail of a particular starship
+1. /about         show my contact info
+
+UI Design
+=========
 
 There is a header bar just read "Watto's Space Eporiume". When a given
 route is not matched/recognized, it will redirected to `/starships`.
@@ -24,15 +31,8 @@ will pop up an alert to my phone number to call.
 Clicking the header bar text will forward the page to `/about` to 
 give myself some info.
 
-Routing
-=======
-
-1. /starships     show all the available starship available from Watto Space Eporium
-1. /starships/:id show detail of a particular starship
-1. /about         show my contact info
-
-Stack
-=====
+Tech Stack Design
+=================
 
 1. use [create-react-app](https://github.com/facebookincubator/create-react-app). to 
    quickly setup babel, webpack, and hmr (parcel-bundle could be used, but it is a 
