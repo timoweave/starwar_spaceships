@@ -13,7 +13,8 @@
 
 .StarshipRight {
   grid-area: right;
-  align-self: center;
+  align-self: top;
+  margin-top: 50px;
   width: 320px;
 }
 

@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 import "./Starships.css";
+import {QUERY_SHIPS, QUERY_IMAGES} from "./store";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -20,37 +21,15 @@ const StyledLink = styled(Link)`
 const Starships = props => {
   // TBD: we can then merge query_ships and query_images together, when
   // apollo support query of both @rest and @client at the same time,
-  const query_ships = gql`
-    query {
-      starships @rest(type: "Starships", path: "starships") {
-        count
-        results {
-          name
-          url
-        }
-      }
-    }
-  `;
-  const query_images = gql`
-    query {
-      images @client {
-        results {
-          id
-          url
-        }
-      }
-    }
-  `;
-
   return (
-    <Query query={query_ships}>
+    <Query query={QUERY_SHIPS}>
       {({loading, error, data: ships}) => {
         if (loading || error) {
           return loading ? <h4>Loading ships...</h4> : <h4>{error.message}</h4>;
         }
 
         return (
-          <Query query={query_images}>
+          <Query query={QUERY_IMAGES}>
             {({loading, error, data}) => {
               if (loading || error) {
                 return loading ? (
@@ -67,8 +46,9 @@ const Starships = props => {
                     const parts = url.split("/");
                     parts.reverse();
                     const [, model] = parts;
-                    const {url: image_url} = images.find(i => i.id === model);
-
+                    const {url: image_url, selected} = images.find(
+                      i => i.id === model,
+                    );
                     return (
                       <div key={url}>
                         <StyledLink to={`/starships/${model}`}>
@@ -77,7 +57,7 @@ const Starships = props => {
                               alt={model}
                               width="100%"
                               crossOrigin="anonymous"
-                              src={image_url}
+                              src={image_url[selected]}
                             />
                             <div className="StarshipsLabel">
                               <h1>{name}</h1>

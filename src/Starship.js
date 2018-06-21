@@ -1,49 +1,23 @@
 import React from "react";
-import {Query} from "react-apollo";
-import gql from "graphql-tag";
-import styled from "styled-components";
+import {Query, Mutation} from "react-apollo";
 import "./Starship.css";
 import formatter from "currency-formatter";
+import {QUERY_IMAGE, QUERY_SHIP} from "./store";
+import {NEXT_IMAGE} from "./store";
 
 const Starship = props => {
   const {match: {params: {model}}} = props;
-  const query_image = gql`
-    query($model: String!) {
-      image(id: $model) @client {
-        url
-      }
-    }
-  `;
-  const query_ship = gql`
-    query($model: String!) {
-      starship(id: $model) @rest(type: "Starship", path: "starships/:id") {
-        MGLT
-        cargo_capacity
-        consumables
-        cost_in_credits
-        crew
-        hyperdrive_rating
-        length
-        manufacturer
-        max_atmosphering_speed
-        model
-        name
-        passengers
-        starship_class
-      }
-    }
-  `;
 
   return (
-    <Query query={query_image} variables={{model}}>
+    <Query query={QUERY_IMAGE} variables={{model}}>
       {({loading, error, data}) => {
         if (loading || error) {
           return loading ? <h4>Loading...</h4> : <h4>{error.message}</h4>;
         }
-        const {image: {url}} = data;
+        const {image: {url, selected}} = data;
 
         return (
-          <Query query={query_ship} variables={{model}}>
+          <Query query={QUERY_SHIP} variables={{model}}>
             {({loading, error, data}) => {
               if (loading || error) {
                 return loading ? <h4>Loading...</h4> : <h4>{error.message}</h4>;
@@ -52,7 +26,7 @@ const Starship = props => {
 
               const {
                 name,
-                model,
+                model: model_name,
                 manufacturer,
                 cost_in_credits,
                 max_atmosphering_speed,
@@ -67,7 +41,16 @@ const Starship = props => {
                 <div className="StarshipContainer">
                   <div className="StarshipLeft">
                     <h1>{name}</h1>
-                    <img alt={model} src={url} width="100%" />
+                    <Mutation mutation={NEXT_IMAGE}>
+                      {nextImage => (
+                        <img
+                          alt={model_name}
+                          src={url[selected]}
+                          width="100%"
+                          onClick={() => nextImage({variables: {id: model}})}
+                        />
+                      )}
+                    </Mutation>
                     <p>
                       Consequat nisl, vel pretium lectus quam id leo in vitae
                       turpis massa sed elementum tempus egestas sed sed risus
