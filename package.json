@@ -1,6 +1,6 @@
 {
-  "name": "magicleap4",
-  "version": "0.1.0",
+  "name": "starwar_spaceship",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.5",
