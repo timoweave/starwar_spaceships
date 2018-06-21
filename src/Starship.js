@@ -1,29 +1,23 @@
 import React from "react";
-import {Query, Mutation} from "react-apollo";
+import {Mutation} from "react-apollo";
+
 import "./Starship.css";
 import formatter from "currency-formatter";
 import {QUERY_IMAGE, QUERY_SHIP} from "./store";
 import {NEXT_IMAGE} from "./store";
+import {Query} from "./utils";
 
 const Starship = props => {
   const {match: {params: {model}}} = props;
 
   return (
     <Query query={QUERY_IMAGE} variables={{model}}>
-      {({loading, error, data}) => {
-        if (loading || error) {
-          return loading ? <h4>Loading...</h4> : <h4>{error.message}</h4>;
-        }
+      {data => {
         const {image: {url, selected}} = data;
-
         return (
           <Query query={QUERY_SHIP} variables={{model}}>
-            {({loading, error, data}) => {
-              if (loading || error) {
-                return loading ? <h4>Loading...</h4> : <h4>{error.message}</h4>;
-              }
+            {data => {
               const {starship} = data;
-
               const {
                 name,
                 model: model_name,

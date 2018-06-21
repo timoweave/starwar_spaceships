@@ -11,7 +11,7 @@ import client from "./store.js";
 import Starships from "./Starships";
 import Starship from "./Starship";
 import About from "./About";
-import {StyledLink} from "./Starships";
+import {Link} from "./utils";
 
 import "./App.css";
 
@@ -22,7 +22,7 @@ const App = () => (
         <div>
           <header className="App-header">
             <h1 className="App-title">
-              <StyledLink to="/about">Watto's Space Emporium</StyledLink>
+              <Link to="/about">Watto's Space Emporium</Link>
             </h1>
           </header>
           <Switch>

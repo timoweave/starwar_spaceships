@@ -1,57 +1,29 @@
 import React from "react";
-import {Query} from "react-apollo";
-import {Link} from "react-router-dom";
-import styled from "styled-components";
 
 import "./Starships.css";
 import {QUERY_SHIPS, QUERY_IMAGES} from "./store";
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: white;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-`;
+import {Query, Link, extract_url_model} from "./utils";
 
 const Starships = props => {
   // TBD: we can then merge query_ships and query_images together, when
   // apollo support query of both @rest and @client at the same time,
   return (
     <Query query={QUERY_SHIPS}>
-      {({loading, error, data: ships}) => {
-        if (loading || error) {
-          return loading ? <h4>Loading ships...</h4> : <h4>{error.message}</h4>;
-        }
-
+      {all_ships => {
         return (
           <Query query={QUERY_IMAGES}>
-            {({loading, error, data}) => {
-              if (loading || error) {
-                return loading ? (
-                  <h4>Loading images...</h4>
-                ) : (
-                  <h4>{error.message}</h4>
-                );
-              }
-              const {images: {results: images}} = data;
-
+            {all_images => {
+              const {images: {results: images}} = all_images;
               return (
                 <div className="StarshipsContainer">
-                  {ships.starships.results.map(({url, name}) => {
-                    const parts = url.split("/");
-                    parts.reverse();
-                    const [, model] = parts;
+                  {all_ships.starships.results.map(({url, name}) => {
+                    const model = extract_url_model(url);
                     const {url: image_url, selected} = images.find(
                       i => i.id === model,
                     );
                     return (
                       <div key={url}>
-                        <StyledLink to={`/starships/${model}`}>
+                        <Link to={`/starships/${model}`}>
                           <div className="StarshipsCard">
                             <img
                               alt={model}
@@ -64,7 +36,7 @@ const Starships = props => {
                               <h2>{url}</h2>
                             </div>
                           </div>
-                        </StyledLink>
+                        </Link>
                       </div>
                     );
                   })}
