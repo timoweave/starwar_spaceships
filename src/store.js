@@ -178,6 +178,9 @@ const state_link = withClientState({
        images: Images!
        image(id: ID!): Image!
      }
+     type Mutation {
+       nextImage(id: ID!): Image!
+     }
   `,
   resolvers: {
     Query: {
